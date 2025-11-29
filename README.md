@@ -1,27 +1,47 @@
 📘 README – Proyecto Ionic + Angular (KIKI App)
-✔ Navegación completa – ✔ Angular Standalone – ✔ Lazy Loading – ✔ Menú lateral
-(Versión corregida según mi implementación actual)
+
+🚀 Características del Proyecto
+
+Navegación completa – ✔
+Angular Standalone – ✔
+Lazy Loading – ✔
+Menú lateral – ✔
 Este proyecto implementa una arquitectura moderna basada en:
+
 Ionic 7
 Angular 17 con Standalone Components
 Lazy loading de páginas
 IonMenu + IonRouterOutlet para navegación con menú lateral
-Pantallas incluidas: Login, Register, Dashboard, Requests, Pending Tasks, Map, Scanner y Profile
+📱 Pantallas Incluidas
 
-
+Login
+Register
+Dashboard
+Requests
+Pending Tasks
+Map
+Scanner
+Profile
 ✅ REQUISITOS PARA EJECUTAR EL PROYECTO
+
 Instalar lo siguiente:
-1. Node.js (versión estable)
+
+Node.js (versión estable)
+
+text
 https://nodejs.org/
-2. Ionic CLI
+Ionic CLI
+
+bash
 npm install -g @ionic/cli
-3. Angular CLI (opcional pero recomendado)
+Angular CLI (opcional pero recomendado)
+
+bash
 npm install -g @angular/cli
-4. Git
-
-
-
+Git
 📂 ESTRUCTURA DEL PROYECTO
+
+text
 src/
 └── app/
     ├── app.routes.ts
@@ -38,23 +58,31 @@ src/
     ├── login/
     └── register/
 Cada carpeta contiene una pantalla completamente independiente, con:
+
 .page.ts
 .page.html
 .page.scss
-
-
 🚀 CÓMO EJECUTAR EL PROYECTO
+
 Ir a la raíz del proyecto:
+
+bash
 cd kiki
 Instalar dependencias:
+
+bash
 npm install
 Ejecutar:
+
+bash
 ionic serve
 La app abrirá automáticamente en el navegador.
 
-
 🧭 SISTEMA DE NAVEGACIÓN (Routing)
+
 app.routes.ts
+
+typescript
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
@@ -70,11 +98,11 @@ export const routes: Routes = [
   { path: 'scanner', loadComponent: () => import('./scanner/scanner.page').then(m => m.ScannerPage) },
   { path: 'profile', loadComponent: () => import('./profile/profile.page').then(m => m.ProfilePage) },
 ];
-
-
 🧱 LAYOUT PRINCIPAL (MENÚ LATERAL + OUTLET)
-✔ app.component.html
 
+app.component.html
+
+html
 <ion-app>
   <ion-menu contentId="main-content" side="start">
     <ion-header>
@@ -96,12 +124,11 @@ export const routes: Routes = [
 
   <ion-router-outlet id="main-content"></ion-router-outlet>
 </ion-app>
-
-
-
-
 🎬 BOTÓN DE MENÚ PARA CADA PÁGINA
+
 Esto debe agregarse en todas las páginas que necesitan abrir el menú:
+
+html
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -110,11 +137,13 @@ Esto debe agregarse en todas las páginas que necesitan abrir el menú:
     <ion-title>Requests</ion-title>
   </ion-toolbar>
 </ion-header>
-
-
 📄 EJEMPLO COMPLETO DE UNA PÁGINA
-✔ RequestsPage (versión correcta)
+
+RequestsPage (versión correcta)
+
 requests.page.ts
+
+typescript
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonicModule, MenuController } from '@ionic/angular';
@@ -142,6 +171,8 @@ export class RequestsPage {
   }
 }
 requests.page.html
+
+html
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -154,8 +185,9 @@ requests.page.html
 <ion-content class="ion-padding">
   <h1>Requests</h1>
 </ion-content>
-
 requests.page.scss
+
+scss
 @use '../../theme/variables.scss' as *;
 
 ion-content {
@@ -173,13 +205,14 @@ ion-content {
   border-radius: 12px;
   box-shadow: var(--shadow-base);
 }
-
-
 🔄 NOTA IMPORTANTE SOBRE NAVEGACIÓN
+
 El proyecto NO tiene la función go() en AppComponent.
-Cada página incluye su propia navegación, ejemplo:
-go('/profile')
-porque app.component.ts está así (correcto):
+Cada página incluye su propia navegación, ejemplo: go('/profile')
+
+app.component.ts está así (correcto):
+
+typescript
 import { Component } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 
@@ -189,10 +222,8 @@ import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
   imports: [IonApp, IonRouterOutlet],
 })
 export class AppComponent {}
-Esto está documentado ahora en el README.
+❗ PROBLEMAS ENFRENTADOS
 
-
-❗ PROBLEMAS ENFRENTADOS (DOCUMENTADO PARA EL PROFESOR)
 Estructura inicial de Ionic distinta a la requerida
 Necesidad de usar Angular 17 con Standalone (sin módulos)
 Lazy loading obligatorio
@@ -200,10 +231,10 @@ Importación manual de IonMenu, IonRouterOutlet, IonHeader
 Errores de navegación por ausencia de funciones (go(), openMenu())
 Reorganización completa de carpetas
 Los diseños finales no forman parte de esta entrega (solo estructura navegable)
-
-
 🎯 CONCLUSIÓN
+
 Este repositorio entrega:
+
 ✔ Menú lateral funcional
 ✔ Navegación profesional
 ✔ Rutas con lazy loading
